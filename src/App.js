@@ -1,22 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import "./App.css";
 
 function App() {
+  const [quote, setQuote] = useState(null);
+  const [author, setAuthor] = useState(null);
+
+  useEffect(() => {
+    const url = "http://localhost:5000/quotes/random";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setQuote(data.quote);
+        setAuthor(data.author);
+      });
+  }, []);
+
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p className="Quote-text">{quote}</p>
+        <p className="Quote-author">{author}</p>
       </header>
     </div>
   );
