@@ -20,6 +20,7 @@ function App() {
       <header className="App-header">
         <p className="Quote-text">{quote}</p>
         <p className="Quote-author">{author}</p>
+        {/* <button type="button" class="btn btn-secondary">Quote Random</button> */}
       </header>
     </div>
   );
